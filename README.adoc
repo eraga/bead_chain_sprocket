@@ -1,5 +1,7 @@
-== Bead Chain Gears library for NopSCADlib
-:openscad_lib_name: bead_chain_gears
+== Bead Chain Sprocket library for NopSCADlib
+:openscad_lib_name: bead_chain_sprocket
+
+Fully parametric bead chain sprocket generator.
 
 image::image.png[]
 
@@ -16,5 +18,5 @@ git submodule add https://github.com/eraga/{openscad_lib_name} lib/{openscad_lib
 ----
 include <../libs/{openscad_lib_name}/{openscad_lib_name}s.scad>
 
-bead_chain_gear(BEAD_CHAIN_10x56);
+{openscad_lib_name}(BEAD_CHAIN_4x2x24);
 ----

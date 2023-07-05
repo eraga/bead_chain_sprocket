@@ -32,18 +32,20 @@ module make_sphere_ring(ring_radius, sphere_radius, num_spheres) {
     }
 }
 
-module make_torus(ring_radius, inner_radius) {
+module make_torus(ring_radius, inner_radius, n_teeth) {
     // openscad apparently can't handle rotate_extrude in a difference, so this isn't a real cylinder
     /*rotate_extrude(convexity=10)translate([ring_radius, 0, 0])circle(inner_radius);*/
     difference() {
         cylinder (
         h = inner_radius*2,
         r = ring_radius,
-        center = true);
+        center = true,
+        $fn = n_teeth);
         cylinder (
         h = inner_radius * 2,
         r = ring_radius - 2*inner_radius,
-        center = true);
+        center = true,
+        $fn = n_teeth);
     }
 }
 
@@ -55,7 +57,7 @@ module bead_chain_ring(type) {
 
     union() {
         make_sphere_ring(r, ball_radius, n_teeth);
-        make_torus(r+.2, link_radius);
+        make_torus(r+.2, link_radius, n_teeth);
     }
 }
 module bead_chain_sprocket_half(type, $fn = 21) {
